@@ -146,7 +146,8 @@ class LangJsGenerator
 
             $fullPath = $path.DIRECTORY_SEPARATOR.$pathName;
             if ($extension == 'php') {
-                $messages[$key] = include $fullPath;
+                $subkeys = explode('.', $key);
+                $messages[$subkeys[0]][$subkeys[1]] = include $fullPath;
             } else {
                 $key = $key.$this->stringsDomain;
                 $fileContent = file_get_contents($fullPath);
